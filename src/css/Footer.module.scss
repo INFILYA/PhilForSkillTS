@@ -1,0 +1,26 @@
+footer {
+    margin-top: auto;
+    position: relative;
+    z-index: 0;
+    align-items: center;
+    background-color: #edecea;
+    padding-top: 0;
+    display: flex;
+    section {
+      min-height: 25vmin;
+      .content-wrapper {
+        padding: 3.3vmax 3.3vw;
+        box-sizing: border-box;
+        width: 100%;
+        .content {
+          display: block;
+          .personal-info-wrapper {
+            p {
+              font-size: calc((var(--normal-text-size-value) - 1) * 1.2vw + 0.65rem);
+            }
+          }
+        }
+      }
+    }
+  }
+  
