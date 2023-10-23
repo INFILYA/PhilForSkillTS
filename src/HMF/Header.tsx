@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import Button from "../utilities/Button";
 import { auth } from "../Firebase/config";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useSetWidth } from "../Custom Hooks/useSetWidth";
+import { RootState } from "../state/store";
 
 type THeaderParams = {
   burgerMenu: boolean;
@@ -13,8 +14,9 @@ type THeaderParams = {
 export default function Header(props: THeaderParams) {
   const [isRegistratedUser] = useAuthState(auth);
   const { burgerMenu, setBurgerMenu } = props;
-  const [width, setWidth] = useState<number>(window.innerWidth);
-  const [sandwichMenu, setSandwichMenu] = useState<boolean>(false);
+  const cartProductsQuantity = useSelector(
+    (state: RootState) => state.cartProductsQuantity.cartProductsQuantity
+  );
   const navItems = [
     "About me",
     "Lesson",
@@ -24,19 +26,8 @@ export default function Header(props: THeaderParams) {
     "Shop",
     "Subscribe",
   ];
-  const cartProductsQuantity = useSelector(
-    (state) => state.cartProductsQuantity.cartProductsQuantity
-  );
-  function checkWidthOfWindow() {
-    setWidth(window.innerWidth);
-  }
-  useEffect(() => {
-    window.addEventListener("resize", checkWidthOfWindow);
-    width > 768 ? setSandwichMenu(false) : setSandwichMenu(true);
-    return () => {
-      window.removeEventListener("resize", checkWidthOfWindow);
-    };
-  }, [width]);
+  const isBurger = useSetWidth() > 768;
+
   return (
     <header>
       <div className="barWrapper" style={burgerMenu ? { backgroundColor: "white" } : {}}>
@@ -51,7 +42,7 @@ export default function Header(props: THeaderParams) {
                 </div>
               </NavLink>
             </div>
-            {!sandwichMenu && (
+            {isBurger && (
               <div className="navigation">
                 <nav>
                   {navItems.map((item) => (
@@ -63,7 +54,7 @@ export default function Header(props: THeaderParams) {
               </div>
             )}
           </div>
-          {!sandwichMenu ? (
+          {isBurger ? (
             <div className="actions">
               <div className="social">
                 <a href="https://www.instagram.com/harmash_30/" className="instagram">

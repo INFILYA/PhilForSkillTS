@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import { signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import SectionWrapper from "../../Wrappers/SectionWrapper";
@@ -8,9 +7,10 @@ import { auth } from "../../Firebase/config";
 import Button from "../../utilities/Button";
 import { setUserInformation } from "../../state/slices/userInfoSlice";
 import { SliderWrap } from "../../css/PhilForSkill.styled";
+import { useAppDispatch } from "../../state/store";
 
 function Slider() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [isRegistratedUser] = useAuthState(auth);
   const pictures = ["/photos/very.jpg", "/photos/team.jpg", "/photos/its.jpg"];
   const PAGE_WIDTH = window.innerWidth;

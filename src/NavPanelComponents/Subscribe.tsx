@@ -4,15 +4,15 @@ import Button from "../utilities/Button";
 import { TUser } from "../Types/types";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, facebookProvider, googleProvider } from "../Firebase/config";
-import { useDispatch } from "react-redux";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { setUserInformation } from "../state/slices/userInfoSlice";
+import { useAppDispatch } from "../state/store";
 
 type TUserTelephone = TUser & { Telephone: string };
 type TUserTelephoneKeys = keyof TUserTelephone;
 
 export default function Subscribe() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [isRegistratedUser] = useAuthState(auth);
   const [userInfo, setUserInfo] = useState<TUserTelephone>({
     FirstName: "",

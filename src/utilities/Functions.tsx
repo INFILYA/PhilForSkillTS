@@ -1,4 +1,5 @@
-export const later = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+export const later = (ms: number): Promise<void> =>
+  new Promise((resolve) => setTimeout(resolve, ms));
 
 export function getFromLocalStorage(name: string) {
   const value = localStorage.getItem(name);

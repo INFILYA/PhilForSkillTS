@@ -16,7 +16,6 @@ import Curry10 from "./NavPanelComponents/Shop components/Curry10";
 import Tshirt from "./NavPanelComponents/Shop components/Tshirt";
 import CreateVideoHighlights from "./NavPanelComponents/Shop components/CreateVideoHighlights";
 import PhilForYouMentorship from "./NavPanelComponents/Shop components/PhilForYouMentorship";
-import { useDispatch } from "react-redux";
 import { setLocalStorageProducts } from "./state/slices/cartTotalProductsSlice";
 import { setCardProductsQuantity } from "./state/slices/cartProductsQuantitySlice";
 import { setCartProductsPrice } from "./state/slices/cartProductsPriceSlice";
@@ -25,9 +24,10 @@ import { getFromLocalStorage } from "./utilities/Functions";
 import { collection, getDocs } from "firebase/firestore";
 import { dataBase } from "./Firebase/config";
 import BookLesson from "./NavPanelComponents/BookLesson";
+import { useAppDispatch } from "./state/store";
 
 export default function PhilForSkill() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [burgerMenu, setBurgerMenu] = useState<boolean>(false);
 
   useEffect(() => {
@@ -45,8 +45,8 @@ export default function PhilForSkill() {
     const cartProductsQuantity = getFromLocalStorage("cartProductsQuantity");
     const cartProductsPrice = getFromLocalStorage("cartProductsPrice");
     dispatch(setLocalStorageProducts(cartContent || []));
-    dispatch(setCardProductsQuantity(cartProductsQuantity));
-    dispatch(setCartProductsPrice(cartProductsPrice));
+    dispatch(setCardProductsQuantity(cartProductsQuantity || 0));
+    dispatch(setCartProductsPrice(cartProductsPrice || 0));
   }, [dispatch]);
   return (
     <>

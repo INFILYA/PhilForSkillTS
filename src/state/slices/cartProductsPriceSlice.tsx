@@ -1,22 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { RootState } from "../store";
+
+const initialState: { cartProductsPrice: number } = { cartProductsPrice: 0 };
 
 export const cartProductsPrice = createSlice({
   name: "cartProductsPrice",
-  initialState: { cartProductsPrice: 0 },
+  initialState,
   reducers: {
-    setAddProductsPrice: (state, action) => {
+    setAddProductsPrice: (state, action: { type: string; payload: number }) => {
       state.cartProductsPrice = state.cartProductsPrice + action.payload;
       localStorage.setItem("cartProductsPrice", JSON.stringify(state.cartProductsPrice));
     },
-    setReduceProductsPrice: (state, action) => {
+    setReduceProductsPrice: (state, action: { type: string; payload: number }) => {
       state.cartProductsPrice = state.cartProductsPrice - action.payload;
       localStorage.setItem("cartProductsPrice", JSON.stringify(state.cartProductsPrice));
     },
-    setRemoveProductPrice: (state, action) => {
+    setRemoveProductPrice: (state, action: { type: string; payload: number }) => {
       state.cartProductsPrice -= action.payload;
       localStorage.setItem("cartProductsPrice", JSON.stringify(state.cartProductsPrice));
     },
-    setCartProductsPrice: (state, action) => {
+    setCartProductsPrice: (state, action: { type: string; payload: number }) => {
       state.cartProductsPrice = action.payload;
       localStorage.setItem("cartProductsPrice", JSON.stringify(state.cartProductsPrice));
     },
@@ -28,4 +31,8 @@ export const {
   setCartProductsPrice,
   setRemoveProductPrice,
 } = cartProductsPrice.actions;
+
+export const selectCartProductsPrice = (state: RootState) =>
+  state.cartProductsPrice.cartProductsPrice;
+
 export default cartProductsPrice.reducer;

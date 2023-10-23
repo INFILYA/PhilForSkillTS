@@ -3,14 +3,14 @@ import { NavLink } from "react-router-dom";
 import Button from "../utilities/Button";
 import { later } from "../utilities/Functions";
 import { TAddCart } from "../Types/types";
-import { useDispatch } from "react-redux";
 import { setAddProductsQuantity } from "../state/slices/cartProductsQuantitySlice";
 import { setAddProductsPrice } from "../state/slices/cartProductsPriceSlice";
 import { setProduct } from "../state/slices/cartTotalProductsSlice";
+import { useAppDispatch } from "../state/store";
 
 export default function AddToCart(props: TAddCart) {
   const { product } = props;
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [quantity, setQuantity] = useState<number>(1);
   const [size, setSize] = useState<string | number>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);

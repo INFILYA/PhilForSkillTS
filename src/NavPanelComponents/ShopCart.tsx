@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, dataBase } from "../Firebase/config";
@@ -9,44 +9,50 @@ import { Time } from "../utilities/Time";
 import SectionWrapper from "../Wrappers/SectionWrapper";
 import Button from "../utilities/Button";
 import {
+  selectCartProductsPrice,
   setAddProductsPrice,
   setCartProductsPrice,
   setReduceProductsPrice,
   setRemoveProductPrice,
 } from "../state/slices/cartProductsPriceSlice";
 import {
+  selectCartProductsQuantity,
   setCardProductsQuantity,
   setMinusOneProductsQuantity,
   setPlusOneProductsQuantity,
   setRemoveProductQuantity,
 } from "../state/slices/cartProductsQuantitySlice";
 import {
+  selectCartTotalProducts,
   setLocalStorageProducts,
   setProduct,
   setRemoveProductFromCart,
 } from "../state/slices/cartTotalProductsSlice";
+import { RootState, useAppDispatch } from "../state/store";
+import { selectUserInfo } from "../state/slices/userInfoSlice";
+import { TChoosenProduct } from "../Types/types";
 
 export default function ShopCart() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [gratefullMessage, setGratefullMessage] = useState<boolean>(false);
   const [isRegistratedUser] = useAuthState(auth);
-  const cartTotalProducts = useSelector((state) => state.cartTotalProducts.cartTotalProducts);
-  const totalPrice = useSelector((state) => state.cartProductsPrice.cartProductsPrice);
-  const totalQuantity = useSelector((state) => state.cartProductsQuantity.cartProductsQuantity);
-  const userInfo = useSelector((state) => state.userInfo.userInfo);
+  const cartTotalProducts = useSelector((state: RootState) => selectCartTotalProducts(state));
+  const totalPrice = useSelector((state: RootState) => selectCartProductsPrice(state));
+  const totalQuantity = useSelector((state: RootState) => selectCartProductsQuantity(state));
+  const userInfo = useSelector((state: RootState) => selectUserInfo(state));
   const cartIsEmpty = cartTotalProducts.length;
-  function increaseQuantityOfProduct(product) {
+  function increaseQuantityOfProduct(product: TChoosenProduct) {
     dispatch(setAddProductsPrice(product.price / product.quantity));
     dispatch(setPlusOneProductsQuantity());
     dispatch(setProduct({ ...product, price: product.price / product.quantity, quantity: 1 }));
   }
-  function reduceQuantityOfProduct(product) {
+  function reduceQuantityOfProduct(product: TChoosenProduct) {
     dispatch(setReduceProductsPrice(product.price / product.quantity));
     dispatch(setMinusOneProductsQuantity());
     dispatch(setProduct({ ...product, price: -(product.price / product.quantity), quantity: -1 }));
   }
-  function removeProductFromCart(product) {
+  function removeProductFromCart(product: TChoosenProduct) {
     dispatch(setRemoveProductFromCart(product));
     dispatch(setRemoveProductQuantity(product.quantity));
     dispatch(setRemoveProductPrice(product.price));

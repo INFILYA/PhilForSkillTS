@@ -24,17 +24,21 @@ export type TBUttonProps = {
   onClick?: () => void;
 };
 
-export type TProducts = {
+export type TProduct = {
   price: number;
   features: string[];
   image: string;
   category: string;
   name: string;
   description: string;
-  size: string[] | number[];
+  size: string[];
   id: string;
 };
 
+type TExclude<T> = T extends "size" ? never : T & { size: string; quantity: number };
+export type TChoosenProduct = TExclude<TProduct>;
+
+
 export type TAddCart = {
-  product: TProducts;
+  product: TProduct;
 };

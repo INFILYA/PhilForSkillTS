@@ -1,13 +1,12 @@
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import SectionWrapper from "../Wrappers/SectionWrapper";
-import { TProducts } from "../Types/types";
+import { TProduct } from "../Types/types";
 import { getFromLocalStorage } from "../utilities/Functions";
-// import { getFromLocalStorage } from "../utilities/Later";
 
 export default function Shop() {
   const [categoryChecked, setCategoryChecked] = useState<string>("Show All");
-  const [products, setProducts] = useState<TProducts[]>([]);
+  const [products, setProducts] = useState<TProduct[]>([]);
   const categorys: string[] = ["Accessories", "Online Services", "Clothes", "Shoes", "Show All"];
   useEffect(() => {
     setProducts(getFromLocalStorage("products"));
