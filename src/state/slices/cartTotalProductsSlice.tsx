@@ -5,7 +5,7 @@ import { RootState } from "../store";
 type TCartTotalProducts = {
   cartTotalProducts: TChoosenProduct[];
 };
-
+type TCartTotalProductsAction = { type: string; payload: TChoosenProduct };
 const initialState: TCartTotalProducts = {
   cartTotalProducts: [],
 };
@@ -14,7 +14,7 @@ export const cartTotalProducts = createSlice({
   name: "cartTotalProducts",
   initialState,
   reducers: {
-    setProduct: (state, action: { type: string; payload: TChoosenProduct }) => {
+    setProduct: (state, action: TCartTotalProductsAction) => {
       if (
         state.cartTotalProducts.some(
           (item) => item.name === action.payload.name && item.size === action.payload.size
@@ -36,7 +36,7 @@ export const cartTotalProducts = createSlice({
       state.cartTotalProducts = action.payload;
       localStorage.setItem("cartContent", JSON.stringify(state.cartTotalProducts));
     },
-    setRemoveProductFromCart: (state, action: { type: string; payload: TChoosenProduct }) => {
+    setRemoveProductFromCart: (state, action: TCartTotalProductsAction) => {
       state.cartTotalProducts = state.cartTotalProducts.filter(
         (product) => product.name + product.size !== action.payload.name + action.payload.size
       );

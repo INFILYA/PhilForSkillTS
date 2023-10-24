@@ -1,25 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
-const initialState: { cartProductsPrice: number } = { cartProductsPrice: 0 };
+type TCartProductsPrice = { cartProductsPrice: number };
+type TCartProductsPriceAction = { type: string; payload: number };
+const initialState: TCartProductsPrice = { cartProductsPrice: 0 };
 
 export const cartProductsPrice = createSlice({
   name: "cartProductsPrice",
   initialState,
   reducers: {
-    setAddProductsPrice: (state, action: { type: string; payload: number }) => {
+    setAddProductsPrice: (state, action: TCartProductsPriceAction) => {
       state.cartProductsPrice = state.cartProductsPrice + action.payload;
       localStorage.setItem("cartProductsPrice", JSON.stringify(state.cartProductsPrice));
     },
-    setReduceProductsPrice: (state, action: { type: string; payload: number }) => {
+    setReduceProductsPrice: (state, action: TCartProductsPriceAction) => {
       state.cartProductsPrice = state.cartProductsPrice - action.payload;
       localStorage.setItem("cartProductsPrice", JSON.stringify(state.cartProductsPrice));
     },
-    setRemoveProductPrice: (state, action: { type: string; payload: number }) => {
+    setRemoveProductPrice: (state, action: TCartProductsPriceAction) => {
       state.cartProductsPrice -= action.payload;
       localStorage.setItem("cartProductsPrice", JSON.stringify(state.cartProductsPrice));
     },
-    setCartProductsPrice: (state, action: { type: string; payload: number }) => {
+    setCartProductsPrice: (state, action: TCartProductsPriceAction) => {
       state.cartProductsPrice = action.payload;
       localStorage.setItem("cartProductsPrice", JSON.stringify(state.cartProductsPrice));
     },
