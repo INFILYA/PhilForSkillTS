@@ -35,9 +35,8 @@ export type TProduct = {
   id: string;
 };
 
-type TExclude<T> = T extends "size" ? never : T & { size: string; quantity: number };
-export type TChoosenProduct = TExclude<TProduct>;
-
+// type TExclude<T> = T extends "size" ? never : T & { size: string | string[]; quantity: number };
+export type TChoosenProduct = TProduct & { quantity: number };
 
 export type TAddCart = {
   product: TProduct;

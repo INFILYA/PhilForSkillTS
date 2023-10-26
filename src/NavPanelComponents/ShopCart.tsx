@@ -85,6 +85,7 @@ export default function ShopCart() {
       console.error(err);
     }
   }
+  console.log(cartTotalProducts);
   return (
     <SectionWrapper
       content={

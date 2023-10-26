@@ -12,11 +12,11 @@ export default function AddToCart(props: TAddCart) {
   const { product } = props;
   const dispatch = useAppDispatch();
   const [quantity, setQuantity] = useState<number>(1);
-  const [size, setSize] = useState<string | number>("");
+  const [size, setSize] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [addButtonText, setAddButtonText] = useState<string>("Add to cart");
   async function sendProductInfo() {
-    if ((size === "" || size === "Select size") && isSizeExist) {
+    if ((size[0] === "" || size[0] === "Select size") && isSizeExist) {
       alert("Unable to Add Item. Please select the Size option.");
       return;
     }
@@ -63,7 +63,7 @@ export default function AddToCart(props: TAddCart) {
               <div className="variant-option">
                 <div className="label">Size:</div>
                 <div className="variant-select-wrapper">
-                  <select onChange={(e) => setSize(e.target.value)}>
+                  <select onChange={(e) => setSize([e.target.value])}>
                     <option defaultValue="Select size">Select size</option>
                     {product.size.map((size) => (
                       <option key={size} value={size}>
