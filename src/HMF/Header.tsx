@@ -36,7 +36,11 @@ export default function Header(props: THeaderParams) {
           <div className="titleNavWrapper">
             <div className="logo">
               <NavLink to={"/"}>
-                <img src="/photos/Logo.jpg" alt="" onClick={() => setBurgerMenu(false)}></img>
+                <img
+                  src={burgerMenu ? "/photos/MyLogo.png" : "/photos/MyLogoWhite.png"}
+                  alt=""
+                  onClick={() => setBurgerMenu(false)}
+                ></img>
                 <div className="user-photo-wrapper">
                   <img src={isRegistratedUser?.photoURL as string} alt="" />
                 </div>

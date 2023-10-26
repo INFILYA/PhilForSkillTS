@@ -70,20 +70,17 @@ header .barWrapper .innerContainer .titleNavWrapper .logo a {
   text-decoration: none;
 }
 header .barWrapper .innerContainer .titleNavWrapper .logo img {
-  max-height: 137px;
+  max-height: 95px;
   width: auto;
   max-width: 100%;
   background-color: transparent;
 }
 header .barWrapper .innerContainer .titleNavWrapper .logo .user-photo-wrapper {
   position: absolute;
-  top: 4%;
-  left: 63%;
-  width: 31.5%;
+  top: 0;
 }
 header .barWrapper .innerContainer .titleNavWrapper .logo .user-photo-wrapper img {
   border-radius: 50%;
-  border: 3px solid red;
 }
 header .barWrapper .innerContainer .titleNavWrapper .logo div {
   text-align: center;
@@ -166,8 +163,6 @@ header .barWrapper .innerContainer .actions .lessonBtn button {
   }
   header .barWrapper .innerContainer .titleNavWrapper .logo .user-photo-wrapper img {
     border-radius: 50%;
-    border: 1px solid red;
-    max-height: 33px;
   }
   header .barWrapper .innerContainer .header-burger .lessonBtn {
     position: fixed;

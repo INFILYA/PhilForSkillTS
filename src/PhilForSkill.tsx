@@ -20,7 +20,7 @@ import { setLocalStorageProducts } from "./state/slices/cartTotalProductsSlice";
 import { setCardProductsQuantity } from "./state/slices/cartProductsQuantitySlice";
 import { setCartProductsPrice } from "./state/slices/cartProductsPriceSlice";
 import ShopCart from "./NavPanelComponents/ShopCart";
-import { getFromLocalStorage } from "./utilities/Functions";
+import { getFromLocalStorage, later } from "./utilities/Functions";
 import { collection, getDocs } from "firebase/firestore";
 import { dataBase } from "./Firebase/config";
 import BookLesson from "./NavPanelComponents/BookLesson";
@@ -28,16 +28,21 @@ import { useAppDispatch } from "./state/store";
 
 export default function PhilForSkill() {
   const dispatch = useAppDispatch();
+  const [isLoading, setIsLoading] = useState(false);
   const [burgerMenu, setBurgerMenu] = useState<boolean>(false);
 
   useEffect(() => {
     async function getProducts() {
       try {
+        setIsLoading(true);
+        await later(2500);
         const data = await getDocs(collection(dataBase, "products"));
         const list = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
         localStorage.setItem("products", JSON.stringify(list));
       } catch (error) {
         console.error(error);
+      } finally {
+        setIsLoading(false);
       }
     }
     getProducts();
@@ -54,26 +59,32 @@ export default function PhilForSkill() {
       {!burgerMenu ? (
         <>
           <main>
-            <article>
-              <Routes>
-                <Route path="/" element={<Main />} />
-                <Route path="/Contact" element={<Contact />} />
-                <Route path="/Lesson" element={<Lesson />} />
-                <Route path="/Subscribe" element={<Subscribe />} />
-                <Route path="/About me" element={<AboutMe />} />
-                <Route path="/Book a Lesson" element={<BookLesson />} />
-                <Route path="/Highlight Video Maker" element={<HighlightVideoMaker />} />
-                <Route path="/Reviews" element={<Reviews />} />
-                <Route path="/Shoping Cart" element={<ShopCart />} />
-                <Route path="/Shop" element={<Shop />} />
-                <Route path="/Shop/Cap" element={<Cap />} />
-                <Route path="/Shop/Curry 10" element={<Curry10 />} />
-                <Route path="/Shop/Gloves" element={<Gloves />} />
-                <Route path="/Shop/Phil For You Mentorship" element={<PhilForYouMentorship />} />
-                <Route path="/Shop/Create Video Highlights" element={<CreateVideoHighlights />} />
-                <Route path="/Shop/T-shirt" element={<Tshirt />} />
-              </Routes>
-            </article>
+            {isLoading ? (
+              <div className="loading-logo-wrapper">
+                <img src="/photos/MyLogo.png" alt="" />
+              </div>
+            ) : (
+              <article>
+                <Routes>
+                  <Route path="/" element={<Main />} />
+                  <Route path="/Contact" element={<Contact />} />
+                  <Route path="/Lesson" element={<Lesson />} />
+                  <Route path="/Subscribe" element={<Subscribe />} />
+                  <Route path="/About me" element={<AboutMe />} />
+                  <Route path="/Book a Lesson" element={<BookLesson />} />
+                  <Route path="/Highlight Video Maker" element={<HighlightVideoMaker />} />
+                  <Route path="/Reviews" element={<Reviews />} />
+                  <Route path="/Shoping Cart" element={<ShopCart />} />
+                  <Route path="/Shop" element={<Shop />} />
+                  <Route path="/Shop/Cap" element={<Cap />} />
+                  <Route path="/Shop/Curry 10" element={<Curry10 />} />
+                  <Route path="/Shop/Gloves" element={<Gloves />} />
+                  <Route path="/Shop/Phil For You Mentorship" element={<PhilForYouMentorship />} />
+                  <Route path="/Shop/Create Video Highlights" element={<CreateVideoHighlights />} />
+                  <Route path="/Shop/T-shirt" element={<Tshirt />} />
+                </Routes>
+              </article>
+            )}
           </main>
           <footer>
             <Footer />
