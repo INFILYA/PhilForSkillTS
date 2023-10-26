@@ -112,7 +112,6 @@ main .loading-logo-wrapper {
 }
 main .loading-logo-wrapper img {
   height: 25vmax;
-  margin-right: 3%;
   animation: greyscale 2.5s forwards;
 }
 main article .super-cart-container .cart-container .create-order-wrapper {
