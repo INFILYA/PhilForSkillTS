@@ -1,10 +1,9 @@
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import Button from "../utilities/Button";
-import { auth } from "../Firebase/config";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { useSetWidth } from "../Custom Hooks/useSetWidth";
 import { RootState } from "../state/store";
+import { selectCartProductsQuantity } from "../state/slices/cartProductsQuantitySlice";
 
 type THeaderParams = {
   burgerMenu: boolean;
@@ -12,11 +11,8 @@ type THeaderParams = {
 };
 
 export default function Header(props: THeaderParams) {
-  const [isRegistratedUser] = useAuthState(auth);
   const { burgerMenu, setBurgerMenu } = props;
-  const cartProductsQuantity = useSelector(
-    (state: RootState) => state.cartProductsQuantity.cartProductsQuantity
-  );
+  const cartProductsQuantity = useSelector((state: RootState) => selectCartProductsQuantity(state));
   const navItems = [
     "About me",
     "Lesson",
@@ -30,6 +26,7 @@ export default function Header(props: THeaderParams) {
 
   return (
     <header>
+      <div className="header-background"></div>
       <div className="barWrapper" style={burgerMenu ? { backgroundColor: "white" } : {}}>
         <div className="header-border"></div>
         <div className="innerContainer">
@@ -41,9 +38,6 @@ export default function Header(props: THeaderParams) {
                   alt=""
                   onClick={() => setBurgerMenu(false)}
                 ></img>
-                <div className="user-photo-wrapper">
-                  <img src={isRegistratedUser?.photoURL as string} alt="" />
-                </div>
               </NavLink>
             </div>
             {isBurger && (
@@ -94,7 +88,7 @@ export default function Header(props: THeaderParams) {
                     ></img>
                   </NavLink>
                   <div className="count" style={burgerMenu ? { color: "black" } : {}}>
-                    {cartProductsQuantity}
+                    {cartProductsQuantity !== 0 && cartProductsQuantity}
                   </div>
                   <button type="button" onClick={() => setBurgerMenu(!burgerMenu)}>
                     {!burgerMenu ? (

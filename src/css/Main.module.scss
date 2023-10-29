@@ -104,6 +104,10 @@ main {
       margin-left: 20px;
     }
   }
+  article:first-child {
+    // margin-top: calc(137px + 4vw);
+    margin-top: 137px;
+  }
   article {
     .super-cart-container {
       .cart-container {
@@ -299,6 +303,7 @@ main {
     .slider-content-wrapper {
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
       .remark {
         font-weight: 600;
         color: whitesmoke;
@@ -635,6 +640,9 @@ main {
 
 @media screen and (max-width: 768px) {
   main {
+    article:first-child {
+      margin-top: 92.7px;
+    }
     article {
       .product-item-summary {
         display: block;

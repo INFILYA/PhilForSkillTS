@@ -1,17 +1,28 @@
 header {
   width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 223;
+}
+header .header-background {
+  opacity: 0.75;
+  filter: contrast(70%) grayscale(100%);
+  background-color: black;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
 }
 header .barWrapper {
   position: relative;
   z-index: 3;
   width: 100%;
   box-sizing: border-box;
-  padding-top: 2vw;
-  padding-bottom: 2vw;
   padding-left: 3vw;
   padding-right: 3vw;
   pointer-events: auto;
-  background-color: black;
 }
 header .barWrapper .header-border {
   width: 100%;
@@ -150,7 +161,7 @@ header .barWrapper .innerContainer .actions .lessonBtn button {
 
 @media screen and (max-width: 768px) {
   header {
-    z-index: 1000;
+    z-index: 100;
   }
   header .barWrapper .innerContainer {
     min-height: 10vh;
