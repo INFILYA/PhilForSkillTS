@@ -617,7 +617,7 @@ main article .shop-content-wrapper .nested-category-children::after {
 }
 @media screen and (max-width: 768px) {
   main article:first-child {
-    margin-top: 81.2px;
+    margin-top: 84.5px;
   }
   main article .product-item-summary {
     display: block;

@@ -3,6 +3,7 @@ header {
   position: fixed;
   top: 0;
   z-index: 223;
+  min-height: 84.5px;
   .header-background {
     opacity: 0.75;
     filter: contrast(70%) grayscale(100%);
@@ -167,16 +168,13 @@ header {
     z-index: 100;
     .barWrapper {
       .innerContainer {
-        min-height: 10vh;
+        min-height: 0;
         .titleNavWrapper {
           .logo {
-            img {
-              max-height: 70px;
-            }
-            .user-photo-wrapper {
-              width: auto;
+            a {
+              padding: 5px 0;
               img {
-                border-radius: 50%;
+                max-height: 70px;
               }
             }
           }

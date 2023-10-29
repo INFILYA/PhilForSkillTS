@@ -3,6 +3,7 @@ header {
   position: fixed;
   top: 0;
   z-index: 223;
+  min-height: 84.5px;
 }
 header .header-background {
   opacity: 0.75;
@@ -164,16 +165,13 @@ header .barWrapper .innerContainer .actions .lessonBtn button {
     z-index: 100;
   }
   header .barWrapper .innerContainer {
-    min-height: 10vh;
+    min-height: 0;
   }
-  header .barWrapper .innerContainer .titleNavWrapper .logo img {
+  header .barWrapper .innerContainer .titleNavWrapper .logo a {
+    padding: 5px 0;
+  }
+  header .barWrapper .innerContainer .titleNavWrapper .logo a img {
     max-height: 70px;
-  }
-  header .barWrapper .innerContainer .titleNavWrapper .logo .user-photo-wrapper {
-    width: auto;
-  }
-  header .barWrapper .innerContainer .titleNavWrapper .logo .user-photo-wrapper img {
-    border-radius: 50%;
   }
   header .barWrapper .innerContainer .header-burger .lessonBtn {
     position: fixed;
