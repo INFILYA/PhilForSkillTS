@@ -138,7 +138,6 @@ main article .super-cart-container .cart-container .cart-row .image-wrapper {
 }
 main article .super-cart-container .cart-container .cart-row .image-wrapper img {
   width: 100%;
-  aspect-ratio: 1/1;
 }
 main article .super-cart-container .cart-container .cart-row .product-info-wrapper {
   width: 60%;
@@ -598,7 +597,6 @@ main article .shop-content-wrapper .nested-category-children::after {
   }
   main article .super-cart-container .cart-container .cart-row .image-wrapper img {
     width: 100%;
-    aspect-ratio: 1/1;
   }
   main article .super-cart-container .cart-container .cart-row .product-info-wrapper {
     display: flex;

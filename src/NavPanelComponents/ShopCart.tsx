@@ -116,7 +116,7 @@ export default function ShopCart() {
                       <div className="product-name-wrapper">
                         <strong>{product.name}</strong>
                       </div>
-                      {product.size && (
+                      {product.size.length > 0 && (
                         <div className="product-size-wrapper">Size: {product.size}</div>
                       )}
                     </div>
