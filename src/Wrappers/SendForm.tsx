@@ -61,7 +61,7 @@ export default function SendForm(props: SendFormProps) {
     } finally {
       setIsLoading((prev) => !prev);
     }
-  }
+  } 
   return (
     <SectionWrapper
       content={
