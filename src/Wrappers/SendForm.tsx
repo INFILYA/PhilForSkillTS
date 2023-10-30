@@ -26,7 +26,7 @@ export default function SendForm(props: SendFormProps) {
   });
   const FirstNameRequired = !userFieldError?.FirstName;
   const LastNameRequired = !userFieldError?.LastName;
-  const emailRequired = !userFieldError?.Email;
+  const emailRequired = !userFieldError?.Email || userFieldError?.Email === "Invalid";
   const messageRequired = !userFieldError?.Message;
   function handleUserChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
@@ -51,9 +51,14 @@ export default function SendForm(props: SendFormProps) {
         name: `${userInfo.FirstName} ${userInfo.LastName}`,
       });
       setFormIsSended(!formIsSended);
-      setIsLoading(!isLoading);
     } catch (err) {
+      setUserFieldError((prev) => ({
+        ...prev,
+        Email: "Invalid",
+      }));
       console.error(err);
+    } finally {
+      setIsLoading((prev) => !prev);
     }
   }
   return (
