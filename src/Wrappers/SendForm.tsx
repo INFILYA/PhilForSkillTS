@@ -26,7 +26,8 @@ export default function SendForm(props: SendFormProps) {
   });
   const FirstNameRequired = !userFieldError?.FirstName;
   const LastNameRequired = !userFieldError?.LastName;
-  const emailRequired = !userFieldError?.Email || userFieldError?.Email === "Invalid";
+  const emailRequired = !userFieldError?.Email;
+  const emailInvalid = userFieldError?.Email === "Invalid";
   const messageRequired = !userFieldError?.Message;
   function handleUserChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
@@ -118,6 +119,7 @@ export default function SendForm(props: SendFormProps) {
                               </div>
                             </legend>
                             {emailRequired && <div className="error-fied">Email is required</div>}
+                            {emailInvalid && <div className="error-fied">Invalid Email</div>}
                             <input
                               type="text"
                               onChange={handleUserChange}
