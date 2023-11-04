@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import SectionWrapper from "../Wrappers/SectionWrapper";
 import { TProduct } from "../Types/types";
@@ -35,7 +35,7 @@ export default function Shop() {
             <div className="list-grid">
               {filteredProducts.map((category) => (
                 <div key={category.name} className="product">
-                  <NavLink to={`/Shop/${category.name}`}>
+                  <Link to={`/Shop/Products?product=${category.name}`}>
                     <div className="product-image-wrapper">
                       <div className="grid-image-wrapper">
                         <img src={category.image} alt="" />
@@ -45,7 +45,7 @@ export default function Shop() {
                       <h4 className="product-name">{category.name}</h4>
                       <div className="product-prise">$ {category.price}.00</div>
                     </div>
-                  </NavLink>
+                  </Link>
                 </div>
               ))}
             </div>

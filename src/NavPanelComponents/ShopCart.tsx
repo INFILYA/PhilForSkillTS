@@ -28,7 +28,7 @@ import {
   setProduct,
   setRemoveProductFromCart,
 } from "../state/slices/cartTotalProductsSlice";
-import { RootState, useAppDispatch } from "../state/store";
+import { useAppDispatch } from "../state/store";
 import { selectUserInfo } from "../state/slices/userInfoSlice";
 import { TChoosenProduct } from "../Types/types";
 
@@ -37,10 +37,10 @@ export default function ShopCart() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [gratefullMessage, setGratefullMessage] = useState<boolean>(false);
   const [isRegistratedUser] = useAuthState(auth);
-  const cartTotalProducts = useSelector((state: RootState) => selectCartTotalProducts(state));
-  const totalPrice = useSelector((state: RootState) => selectCartProductsPrice(state));
-  const totalQuantity = useSelector((state: RootState) => selectCartProductsQuantity(state));
-  const userInfo = useSelector((state: RootState) => selectUserInfo(state));
+  const cartTotalProducts = useSelector(selectCartTotalProducts);
+  const totalPrice = useSelector(selectCartProductsPrice);
+  const totalQuantity = useSelector(selectCartProductsQuantity);
+  const userInfo = useSelector(selectUserInfo);
   const cartIsEmpty = cartTotalProducts.length;
   function increaseQuantityOfProduct(product: TChoosenProduct) {
     dispatch(setAddProductsPrice(product.price / product.quantity));

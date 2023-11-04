@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import Button from "../utilities/Button";
 import { useSetWidth } from "../Custom Hooks/useSetWidth";
-import { RootState } from "../state/store";
 import { selectCartProductsQuantity } from "../state/slices/cartProductsQuantitySlice";
 
 type THeaderParams = {
@@ -12,7 +11,7 @@ type THeaderParams = {
 
 export default function Header(props: THeaderParams) {
   const { burgerMenu, setBurgerMenu } = props;
-  const cartProductsQuantity = useSelector((state: RootState) => selectCartProductsQuantity(state));
+  const cartProductsQuantity = useSelector(selectCartProductsQuantity);
   const navItems = [
     "About me",
     "Lesson",
