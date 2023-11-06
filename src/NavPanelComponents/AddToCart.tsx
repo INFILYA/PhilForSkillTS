@@ -16,7 +16,7 @@ export default function AddToCart(props: TAddCart) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [addButtonText, setAddButtonText] = useState<string>("Add to cart");
   async function sendProductInfo() {
-    if ((size[0] === "" || size[0] === "Select size") && isSizeExist) {
+    if (size.length === 0 && isSizeExist) {
       alert("Unable to Add Item. Please select the Size option.");
       return;
     }
@@ -39,6 +39,7 @@ export default function AddToCart(props: TAddCart) {
     setAddButtonText("Add to cart");
   }
   const isSizeExist = "size" in product && product.size.length > 1;
+  console.log(size);
   return (
     <>
       <div style={{ margin: "-1vmax 0 2vmax 0" }}>
