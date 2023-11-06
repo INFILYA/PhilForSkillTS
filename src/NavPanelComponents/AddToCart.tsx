@@ -39,7 +39,6 @@ export default function AddToCart(props: TAddCart) {
     setAddButtonText("Add to cart");
   }
   const isSizeExist = "size" in product && product.size.length > 1;
-  console.log(size);
   return (
     <>
       <div style={{ margin: "-1vmax 0 2vmax 0" }}>
