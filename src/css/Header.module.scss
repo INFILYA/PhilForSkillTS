@@ -77,12 +77,11 @@ header {
             max-width: 100%;
             max-height: 137px;
             text-decoration: none;
-          }
-          img {
-            max-height: 95px;
-            width: auto;
-            max-width: 100%;
-            background-color: transparent;
+            .my-logo-wrapper-header {
+              display: flex;
+              max-height: 95px;
+              aspect-ratio: 1/1;
+            }
           }
           .user-photo-wrapper {
             position: absolute;
@@ -173,8 +172,10 @@ header {
           .logo {
             a {
               padding: 5px 0;
-              img {
+              .my-logo-wrapper-header {
+                display: flex;
                 max-height: 70px;
+                aspect-ratio: 1/1;
               }
             }
           }

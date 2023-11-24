@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import Button from "../utilities/Button";
 import { useSetWidth } from "../Custom Hooks/useSetWidth";
 import { selectCartProductsQuantity } from "../state/slices/cartProductsQuantitySlice";
+import MyLogo from "../MyLogo";
 
 type THeaderParams = {
   burgerMenu: boolean;
@@ -31,12 +32,10 @@ export default function Header(props: THeaderParams) {
         <div className="innerContainer">
           <div className="titleNavWrapper">
             <div className="logo">
-              <NavLink to={"/"}>
-                <img
-                  src={burgerMenu ? "/photos/MyLogo.png" : "/photos/MyLogoWhite.png"}
-                  alt=""
-                  onClick={() => setBurgerMenu(false)}
-                ></img>
+              <NavLink to={"/"} onClick={() => setBurgerMenu(false)}>
+                <div className="my-logo-wrapper-header">
+                  {!burgerMenu ? <MyLogo innerColor="#0057b8" outterColor="#ffd700" /> : <MyLogo />}
+                </div>
               </NavLink>
             </div>
             {isBurger && (

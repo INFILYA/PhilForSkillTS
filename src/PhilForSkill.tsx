@@ -20,6 +20,7 @@ import { dataBase } from "./Firebase/config";
 import BookLesson from "./NavPanelComponents/BookLesson";
 import { useAppDispatch } from "./state/store";
 import Products from "./NavPanelComponents/Shop products/Products";
+import MyLogo from "./MyLogo";
 
 export default function PhilForSkill() {
   const dispatch = useAppDispatch();
@@ -55,9 +56,18 @@ export default function PhilForSkill() {
         <>
           <main>
             {isLoading ? (
-              <div className="loading-logo-wrapper">
-                <img src="/photos/MyLogo.png" alt="" />
-              </div>
+              // <div className="loading-logo-wrapper">
+              //   <img src="/photos/MyLogo.png" alt="" />
+              // </div>
+              <>
+                <div className="loading-logo-wrapper">
+                  <div className="logo-wrapper">
+                    <img src="/photos/ball.png" alt="" className="back-photo" />
+                    <MyLogo />
+                    <div className="backGround"></div>
+                  </div>
+                </div>
+              </>
             ) : (
               <article>
                 <Routes>

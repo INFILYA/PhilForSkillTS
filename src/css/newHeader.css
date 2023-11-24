@@ -81,11 +81,10 @@ header .barWrapper .innerContainer .titleNavWrapper .logo a {
   max-height: 137px;
   text-decoration: none;
 }
-header .barWrapper .innerContainer .titleNavWrapper .logo img {
+header .barWrapper .innerContainer .titleNavWrapper .logo a .my-logo-wrapper-header {
+  display: flex;
   max-height: 95px;
-  width: auto;
-  max-width: 100%;
-  background-color: transparent;
+  aspect-ratio: 1/1;
 }
 header .barWrapper .innerContainer .titleNavWrapper .logo .user-photo-wrapper {
   position: absolute;
@@ -170,8 +169,10 @@ header .barWrapper .innerContainer .actions .lessonBtn button {
   header .barWrapper .innerContainer .titleNavWrapper .logo a {
     padding: 5px 0;
   }
-  header .barWrapper .innerContainer .titleNavWrapper .logo a img {
+  header .barWrapper .innerContainer .titleNavWrapper .logo a .my-logo-wrapper-header {
+    display: flex;
     max-height: 70px;
+    aspect-ratio: 1/1;
   }
   header .barWrapper .innerContainer .header-burger .lessonBtn {
     position: fixed;

@@ -86,6 +86,14 @@ textarea:focus {
     filter: contrast(100%) grayscale(0%);
   }
 }
+@keyframes fillUp {
+  from {
+    height: -100%;
+  }
+  to {
+    height: 0;
+  }
+}
 
 main {
   .loading-logo-wrapper {
@@ -93,15 +101,35 @@ main {
     top: 0;
     bottom: 0;
     background-color: white;
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 500;
-    img {
-      height: 25vmax;
-      animation: greyscale 2.5s forwards;
-      margin-left: 20px;
+    .logo-wrapper {
+      position: absolute;
+      width: 60vmin;
+      display: flex;
+      .my-logo {
+        z-index: 13;
+      }
+      .back-photo {
+        position: absolute;
+        width: 58.7vmin;
+        margin-left: -4%;
+        margin-top: -4%;
+        rotate: 328deg;
+        z-index: 11;
+      }
+      .backGround {
+        position: absolute;
+        animation: fillUp 2.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
+        z-index: 10;
+        background-color: white;
+        height: 100%;
+        width: 100%;
+        z-index: 12;
+      }
     }
   }
   article:first-child {
