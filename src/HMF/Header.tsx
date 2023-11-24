@@ -34,7 +34,16 @@ export default function Header(props: THeaderParams) {
             <div className="logo">
               <NavLink to={"/"} onClick={() => setBurgerMenu(false)}>
                 <div className="my-logo-wrapper-header">
-                  {!burgerMenu ? <MyLogo innerColor="#0057b8" outterColor="#ffd700" /> : <MyLogo />}
+                  {!burgerMenu ? (
+                    <MyLogo
+                      letterH="red"
+                      letterI="white"
+                      outterColorTop="#0057b8"
+                      outterColorBottom="#ffd700"
+                    />
+                  ) : (
+                    <MyLogo />
+                  )}
                 </div>
               </NavLink>
             </div>
