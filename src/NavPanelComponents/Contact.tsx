@@ -14,17 +14,17 @@ export default function Contact() {
                 <br></br>
                 <strong>Email</strong>
                 <br></br>
-                Infilya@ukr.net
+                infilya89@gmail.com
                 <br></br>
                 <br></br>
                 <strong>Phone</strong>
                 <br></br>
-                +380667183872
+                +1 (647) 920-68-96
               </p>
               <p>
                 <strong>Location:</strong>
               </p>
-              <p>Ukraine, Poltava, Oputna 108v</p>
+              <p>Canada, ON Toronto, Dufferin street 3091</p>
               <div className="social-wrapper">
                 <a href="https://www.instagram.com/harmash_30/" className="instagram">
                   <img alt="" src="/photos/instagram.jpg"></img>

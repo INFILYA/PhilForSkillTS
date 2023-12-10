@@ -8,8 +8,8 @@ export default function Footer() {
           <h4>Philip Harmash</h4>
           <div className="personal-info-wrapper">
             <p>
-              Infilya@ukr.net<br></br>
-              +38 (066) 718-38-72
+              infilya89@gmail.com<br></br>
+              +1 (647) 920-68-96
             </p>
           </div>
         </div>

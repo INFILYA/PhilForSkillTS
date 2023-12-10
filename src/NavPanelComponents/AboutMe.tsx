@@ -23,9 +23,9 @@ export default function AboutMe() {
                     <p>
                       Hello.
                       <br></br> My name is Philip Harmash. I'm a former professional volleyball
-                      player.<br></br>Right now, I'm a Head Coach of Reshetylivka Volleyball Club in
-                      Poltava. <br></br>My volleyball adventure started when I was seven years old.
-                      And by my senior year, I got an offer from one most prestigious volleybal club
+                      player.<br></br>Right now, I'm a coach of Unity Volleyball Club in Toronto
+                      . <br></br>My volleyball adventure started when I was seven years old.
+                      And by my senior year, I got an offer from one of the most prestigious volleybal club
                       in Ukraine. At sixteen years old , I signed my first professional contract
                       with that clubs.<br></br> That's how I started playing professionally.
                       <br></br> During my successful volleyball adventure, I've played in Romania,
