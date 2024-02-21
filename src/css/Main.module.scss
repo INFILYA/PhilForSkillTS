@@ -132,10 +132,6 @@ main {
       }
     }
   }
-  article:first-child {
-    // margin-top: calc(137px + 4vw);
-    margin-top: 137px;
-  }
   article {
     .super-cart-container {
       .cart-container {
@@ -666,9 +662,6 @@ main {
 
 @media screen and (max-width: 768px) {
   main {
-    article:first-child {
-      margin-top: 84.5px;
-    }
     article {
       .product-item-summary {
         display: block;

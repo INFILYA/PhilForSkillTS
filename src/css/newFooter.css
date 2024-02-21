@@ -7,6 +7,9 @@ footer {
   padding-top: 0;
   display: flex;
 }
+footer .personal-info-wrapper p {
+  font-size: clamp(13px, 2vw, 16px);
+}
 footer section {
   min-height: 25vmin;
 }
@@ -17,9 +20,6 @@ footer section .content-wrapper {
 }
 footer section .content-wrapper .content {
   display: block;
-}
-footer section .content-wrapper .content .personal-info-wrapper p {
-  font-size: calc((var(--normal-text-size-value) - 1) * 1.2vw + 0.65rem);
 }
 
 /*# sourceMappingURL=newFooter.css.map */

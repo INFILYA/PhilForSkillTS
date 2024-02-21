@@ -143,9 +143,6 @@ main .loading-logo-wrapper .logo-wrapper .backGround {
   width: 100%;
   z-index: 12;
 }
-main article:first-child {
-  margin-top: 137px;
-}
 main article .super-cart-container .cart-container .create-order-wrapper {
   display: block;
   width: 100%;
@@ -644,9 +641,6 @@ main article .shop-content-wrapper .nested-category-children::after {
   }
 }
 @media screen and (max-width: 768px) {
-  main article:first-child {
-    margin-top: 84.5px;
-  }
   main article .product-item-summary {
     display: block;
   }

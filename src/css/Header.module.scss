@@ -1,9 +1,8 @@
 header {
   width: 100%;
-  position: fixed;
+  position: sticky;
   top: 0;
   z-index: 223;
-  min-height: 84.5px;
   .header-background {
     opacity: 0.75;
     filter: contrast(70%) grayscale(100%);
