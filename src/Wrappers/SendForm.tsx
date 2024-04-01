@@ -6,28 +6,30 @@ import { doc, setDoc } from "firebase/firestore";
 import { auth, dataBase } from "../Firebase/config";
 import { Time } from "../utilities/Time";
 import { later } from "../utilities/Functions";
+import { useAuthState } from "react-firebase-hooks/auth";
 type TUserMessage = TUser & { Message: string };
 
 export default function SendForm(props: SendFormProps) {
   const { leftSide, text, page } = props;
+  const [isRegistratedUser] = useAuthState(auth);
   const [formIsSended, setFormIsSended] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [userInfo, setUserInfo] = useState<TUserMessage>({
     FirstName: "",
     LastName: "",
-    Email: "",
+    Email: isRegistratedUser?.email || "",
     Message: "",
   });
   const [userFieldError, setUserFieldError] = useState<TUserMessage>({
     FirstName: "empty",
     LastName: "empty",
-    Email: "empty",
+    Email: isRegistratedUser?.email || "",
     Message: "empty",
   });
   const FirstNameRequired = !userFieldError?.FirstName;
   const LastNameRequired = !userFieldError?.LastName;
-  const emailRequired = !userFieldError?.Email;
-  const emailInvalid = userFieldError?.Email === "Invalid";
+  // const emailRequired = !userFieldError?.Email;
+  // const emailInvalid = userFieldError?.Email === "Invalid";
   const messageRequired = !userFieldError?.Message;
   function handleUserChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
@@ -61,7 +63,10 @@ export default function SendForm(props: SendFormProps) {
     } finally {
       setIsLoading((prev) => !prev);
     }
-  } 
+  }
+  console.log(userFieldError);
+  console.log(userInfo);
+
   return (
     <SectionWrapper
       content={
@@ -109,7 +114,7 @@ export default function SendForm(props: SendFormProps) {
                               />
                             </div>
                           </fieldset>
-                          <div className="field-email field">
+                          {/* <div className="field-email field">
                             <legend>
                               <div className="forspan">
                                 <span>
@@ -126,7 +131,7 @@ export default function SendForm(props: SendFormProps) {
                               value={userInfo.Email}
                               name="Email"
                             />
-                          </div>
+                          </div> */}
                           <div className="field-message field">
                             <legend>
                               <div className="forspan">
@@ -147,9 +152,15 @@ export default function SendForm(props: SendFormProps) {
                           </div>
                           <div className="form-button-wrapper">
                             <Button
-                              text={isLoading ? "Sending" : "Send"}
+                              text={
+                                !isRegistratedUser
+                                  ? "To continue need to Subscribe"
+                                  : isLoading
+                                  ? "Sending"
+                                  : "Send"
+                              }
                               type="submit"
-                              disabled={isLoading}
+                              disabled={isLoading || !isRegistratedUser}
                             />
                           </div>
                         </div>
